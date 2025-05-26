@@ -3,78 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OnlyMeats - Where Real Men Grill</title>
+    <title>OnlyMeats | Where Meat Meets the Heat</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
-        
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #1a1a1a;
+            font-family: 'Oswald', sans-serif;
+            background-color: #0a0a0a;
             color: #f5f5f5;
         }
         
         .title-font {
-            font-family: 'Bebas Neue', cursive;
+            font-family: 'Alfa Slab One', cursive;
+            letter-spacing: 1px;
         }
         
         .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-158681223790-8a5d1a2e0b0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-158681223790-8a5d1a2e0b0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             position: relative;
         }
         
-        .flame {
-            position: absolute;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 100, 0, 0.3), rgba(255, 50, 0, 0.6));
-            bottom: 0;
-            z-index: 1;
-        }
-        
-        .meat-card {
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .meat-card:hover {
-            transform: translateY(-5px);
-            border-color: #f97316;
-            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
-        }
-        
-        .pitmaster-card {
-            transition: all 0.3s ease;
-        }
-        
-        .pitmaster-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        }
-        
-        .smoke-effect {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .smoke-effect::before {
-            content: '';
+        .smoke-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background: url('https://www.transparenttextures.com/patterns/smoke.png');
-            opacity: 0.1;
+            opacity: 0.15;
             pointer-events: none;
         }
         
-        .countdown-box {
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(220, 38, 38, 0.2));
-            border: 1px solid rgba(249, 115, 22, 0.5);
+        .flame-border {
+            height: 8px;
+            background: linear-gradient(90deg, #f97316, #ef4444, #f97316);
+        }
+        
+        .meat-card {
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8), rgba(40, 40, 40, 0.8));
+        }
+        
+        .meat-card:hover {
+            transform: translateY(-8px);
+            border-color: #f97316;
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+        }
+        
+        .meat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%);
+            z-index: 1;
+        }
+        
+        .grill-mark {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f97316' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+        
+        .sauce-drip {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ef4444'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z'/%3E%3C/svg%3E") no-repeat;
+            transform: rotate(45deg);
+            opacity: 0.7;
         }
         
         .nav-link {
@@ -85,8 +92,8 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
-            bottom: 0;
+            height: 3px;
+            bottom: -5px;
             left: 0;
             background-color: #f97316;
             transition: width 0.3s ease;
@@ -95,9 +102,54 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        
+        .pitmaster-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(to bottom, rgba(20, 20, 20, 0.8), rgba(40, 40, 40, 0.8));
+        }
+        
+        .pitmaster-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+        }
+        
+        .blog-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(to bottom, rgba(20, 20, 20, 0.8), rgba(40, 40, 40, 0.8));
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+        }
+        
+        .input-grill {
+            background-color: rgba(30, 30, 30, 0.8);
+            border: 2px solid #444;
+            transition: all 0.3s ease;
+        }
+        
+        .input-grill:focus {
+            outline: none;
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .live-pulse {
+            animation: pulse 2s infinite;
+        }
     </style>
 </head>
-<body class="smoke-effect">
+<body class="relative">
+    <div class="smoke-overlay"></div>
+    <div class="grill-mark"></div>
+    
     <!-- Navigation -->
     <nav class="bg-black bg-opacity-90 sticky top-0 z-50 border-b border-orange-900">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -106,129 +158,157 @@
                 <span class="title-font text-3xl text-orange-500">Only<span class="text-white">Meats</span></span>
             </div>
             <div class="hidden md:flex space-x-8">
-                <a href="#" class="nav-link text-white hover:text-orange-500">Live Grills</a>
-                <a href="#" class="nav-link text-white hover:text-orange-500">Pitmasters</a>
-                <a href="#" class="nav-link text-white hover:text-orange-500">Meat Vault</a>
-                <a href="#" class="nav-link text-white hover:text-orange-500">Shop</a>
+                <a href="#live" class="nav-link text-white hover:text-orange-500">Live Grills</a>
+                <a href="#pitmasters" class="nav-link text-white hover:text-orange-500">Pitmasters</a>
+                <a href="#vault" class="nav-link text-white hover:text-orange-500">Meat Vault</a>
+                <a href="#blog" class="nav-link text-white hover:text-orange-500">Behind the Smoke</a>
             </div>
             <div class="flex items-center space-x-4">
-                <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full font-bold">
-                    Join the Grill
+                <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full font-bold flex items-center">
+                    <i class="fas fa-user-plus mr-2"></i> Join
                 </button>
-                <button class="md:hidden text-white">
-                    <i class="fas fa-bars text-2xl"></i>
+                <button class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
+        <div class="flame-border"></div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero-bg min-h-screen flex items-center justify-center text-center relative">
-        <div class="flame"></div>
         <div class="container mx-auto px-4 py-20 z-10">
-            <h1 class="title-font text-6xl md:text-8xl mb-6 text-white">
-                <span class="text-orange-500">MEAT</span> YOUR MAKER
+            <div class="sauce-drip top-1/4 left-1/4"></div>
+            <div class="sauce-drip top-2/3 right-1/3"></div>
+            
+            <h1 class="title-font text-5xl md:text-8xl mb-6 text-white">
+                WHERE <span class="text-orange-500">MEAT</span> MEETS THE <span class="text-orange-500">HEAT</span>
             </h1>
             <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">
-                Where real men grill, smoke, and reveal their meat in high-definition glory. No veggies allowed.
+                The ultimate live grill experience where pitmasters reveal their meat in glorious HD. No veggies. No apologies.
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full font-bold text-lg">
-                    <i class="fas fa-fire mr-2"></i> Watch Live Now
+                <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center">
+                    <i class="fas fa-fire mr-2"></i> Watch the Sizzle Live
                 </button>
-                <button class="bg-transparent hover:bg-orange-900 text-white border-2 border-orange-600 px-8 py-4 rounded-full font-bold text-lg">
-                    <i class="fas fa-user-plus mr-2"></i> Become a Pitmaster
+                <button class="bg-transparent hover:bg-orange-900 text-white border-2 border-orange-600 px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center">
+                    <i class="fas fa-play-circle mr-2"></i> See Trailer
                 </button>
             </div>
             <div class="mt-16">
-                <p class="text-orange-300 mb-2">Currently sizzling:</p>
-                <div class="flex justify-center items-center space-x-4">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse mr-2"></div>
-                        <span class="font-bold">1,245</span> carnivores online
-                    </div>
-                    <span class="text-gray-400">|</span>
-                    <div>
-                        <span class="font-bold">"The Ribeye Revelation"</span> with Big Tony
-                    </div>
+                <div class="inline-flex items-center bg-black bg-opacity-70 px-4 py-2 rounded-full">
+                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse mr-2"></div>
+                    <span class="font-bold text-orange-400">LIVE NOW:</span>
+                    <span class="ml-2">"The Brisket Revelation" with Big Tony</span>
+                    <span class="mx-2 text-gray-400">|</span>
+                    <span>1,842 carnivores watching</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Upcoming Streams -->
-    <section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <!-- Live Stream Preview -->
+    <section id="live" class="py-20 bg-gradient-to-b from-gray-900 to-black">
         <div class="container mx-auto px-4">
-            <h2 class="title-font text-4xl md:text-5xl mb-12 text-center">
-                <span class="text-orange-500">UPCOMING</span> MEATINGS
-            </h2>
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl mb-4">
+                    <span class="text-orange-500">LIVE</span> GRILL STREAMS
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Tune in to watch masters at work. See the smoke. Feel the heat. Taste the glory (virtually).
+                </p>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Stream Card 1 -->
-                <div class="meat-card bg-gray-800 rounded-xl overflow-hidden">
+                <!-- Stream 1 -->
+                <div class="meat-card rounded-xl overflow-hidden relative">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Brisket" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 countdown-box px-3 py-1 rounded-full">
-                            <span class="text-orange-400 font-bold">TOMORROW 8PM EST</span>
+                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Brisket" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 left-0 bg-orange-600 text-white px-3 py-1 rounded-br-lg">
+                            <span class="font-bold">LIVE</span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-60">
+                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-full font-bold flex items-center">
+                                <i class="fas fa-play mr-2"></i> Watch Now
+                            </button>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="title-font text-2xl mb-2">The Brisket Unboxing</h3>
-                        <p class="text-gray-300 mb-4">Watch as Smokin' Joe reveals his 16-hour smoked brisket in glorious 4K.</p>
+                    <div class="p-6 relative z-10">
+                        <h3 class="title-font text-2xl mb-2">Brisket Unboxing</h3>
+                        <p class="text-gray-300 mb-4">16-hour smoked perfection revealed in 4K glory</p>
                         <div class="flex justify-between items-center">
                             <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Pitmaster" class="w-8 h-8 rounded-full mr-2">
-                                <span>Smokin' Joe</span>
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Pitmaster" class="w-10 h-10 rounded-full mr-3 border-2 border-orange-600">
+                                <div>
+                                    <p class="font-bold">Smokin' Joe</p>
+                                    <p class="text-sm text-orange-400">1,245 watching</p>
+                                </div>
                             </div>
-                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full text-sm">
-                                Set Reminder
-                            </button>
+                            <div class="text-orange-500">
+                                <i class="fas fa-fire"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Stream Card 2 -->
-                <div class="meat-card bg-gray-800 rounded-xl overflow-hidden">
+                <!-- Stream 2 -->
+                <div class="meat-card rounded-xl overflow-hidden relative">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ribs" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 countdown-box px-3 py-1 rounded-full">
-                            <span class="text-orange-400 font-bold">SAT 3PM EST</span>
+                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Ribs" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 left-0 bg-gray-600 text-white px-3 py-1 rounded-br-lg">
+                            <span class="font-bold">COMING SOON</span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-60">
+                            <button class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-full font-bold flex items-center">
+                                <i class="far fa-clock mr-2"></i> Set Reminder
+                            </button>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="title-font text-2xl mb-2">Rib Drip Contest</h3>
-                        <p class="text-gray-300 mb-4">5 pitmasters compete to create the most mouth-watering rib drip shot.</p>
+                    <div class="p-6 relative z-10">
+                        <h3 class="title-font text-2xl mb-2">Rib Drip Championship</h3>
+                        <p class="text-gray-300 mb-4">5 pitmasters compete for the juiciest reveal</p>
                         <div class="flex justify-between items-center">
                             <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Pitmaster" class="w-8 h-8 rounded-full mr-2">
-                                <span>Grill Sergeant</span>
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Pitmaster" class="w-10 h-10 rounded-full mr-3 border-2 border-orange-600">
+                                <div>
+                                    <p class="font-bold">Grill Sergeant</p>
+                                    <p class="text-sm text-gray-400">Starts in 2h 15m</p>
+                                </div>
                             </div>
-                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full text-sm">
-                                Set Reminder
-                            </button>
+                            <div class="text-gray-500">
+                                <i class="far fa-clock"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Stream Card 3 -->
-                <div class="meat-card bg-gray-800 rounded-xl overflow-hidden">
+                <!-- Stream 3 -->
+                <div class="meat-card rounded-xl overflow-hidden relative">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Steak" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 countdown-box px-3 py-1 rounded-full">
-                            <span class="text-orange-400 font-bold">SUN 6PM EST</span>
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Steak" class="w-full h-64 object-cover">
+                        <div class="absolute top-0 left-0 bg-orange-600 text-white px-3 py-1 rounded-br-lg">
+                            <span class="font-bold">LIVE</span>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-60">
+                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-full font-bold flex items-center">
+                                <i class="fas fa-play mr-2"></i> Watch Now
+                            </button>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="title-font text-2xl mb-2">Steak & Stare</h3>
-                        <p class="text-gray-300 mb-4">The Butcher will stare into your soul while cutting the perfect tomahawk.</p>
+                    <div class="p-6 relative z-10">
+                        <h3 class="title-font text-2xl mb-2">Tomahawk Tear Down</h3>
+                        <p class="text-gray-300 mb-4">2-inch thick cut with perfect crosshatch marks</p>
                         <div class="flex justify-between items-center">
                             <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/men/92.jpg" alt="Pitmaster" class="w-8 h-8 rounded-full mr-2">
-                                <span>The Butcher</span>
+                                <img src="https://randomuser.me/api/portraits/men/92.jpg" alt="Pitmaster" class="w-10 h-10 rounded-full mr-3 border-2 border-orange-600">
+                                <div>
+                                    <p class="font-bold">The Butcher</p>
+                                    <p class="text-sm text-orange-400">892 watching</p>
+                                </div>
                             </div>
-                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full text-sm">
-                                Set Reminder
-                            </button>
+                            <div class="text-orange-500">
+                                <i class="fas fa-fire"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -236,24 +316,29 @@
             
             <div class="text-center mt-12">
                 <button class="bg-transparent hover:bg-orange-900 text-white border-2 border-orange-600 px-8 py-3 rounded-full font-bold text-lg">
-                    View All Upcoming Meatings
+                    View All Live Streams
                 </button>
             </div>
         </div>
     </section>
 
     <!-- Featured Pitmasters -->
-    <section class="py-20 bg-black">
+    <section id="pitmasters" class="py-20 bg-black">
         <div class="container mx-auto px-4">
-            <h2 class="title-font text-4xl md:text-5xl mb-12 text-center">
-                <span class="text-orange-500">FEATURED</span> PITMASTERS
-            </h2>
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl mb-4">
+                    <span class="text-orange-500">FEATURED</span> PITMASTERS
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Meet the men who turn raw meat into legendary reveals. These grill gods don't just cook—they perform.
+                </p>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Pitmaster 1 -->
-                <div class="pitmaster-card bg-gray-900 rounded-xl overflow-hidden text-center">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pitmaster" class="w-full h-64 object-cover">
+                <div class="pitmaster-card rounded-xl overflow-hidden text-center border border-gray-800">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pitmaster" class="w-full h-full object-cover">
                         <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
                             <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Pitmaster" class="w-16 h-16 rounded-full border-4 border-orange-600">
                         </div>
@@ -266,13 +351,16 @@
                             <span class="bg-orange-900 text-orange-300 px-2 py-1 rounded text-xs">12hr Brisket</span>
                             <span class="bg-orange-900 text-orange-300 px-2 py-1 rounded text-xs">Apple Wood</span>
                         </div>
+                        <button class="mt-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm w-full">
+                            View Profile
+                        </button>
                     </div>
                 </div>
                 
                 <!-- Pitmaster 2 -->
-                <div class="pitmaster-card bg-gray-900 rounded-xl overflow-hidden text-center">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pitmaster" class="w-full h-64 object-cover">
+                <div class="pitmaster-card rounded-xl overflow-hidden text-center border border-gray-800">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Pitmaster" class="w-full h-full object-cover">
                         <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
                             <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Pitmaster" class="w-16 h-16 rounded-full border-4 border-orange-600">
                         </div>
@@ -285,13 +373,16 @@
                             <span class="bg-orange-900 text-orange-300 px-2 py-1 rounded text-xs">Dry Aging</span>
                             <span class="bg-orange-900 text-orange-300 px-2 py-1 rounded text-xs">Tomahawk</span>
                         </div>
+                        <button class="mt-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm w-full">
+                            View Profile
+                        </button>
                     </div>
                 </div>
                 
                 <!-- Pitmaster 3 -->
-                <div class="pitmaster-card bg-gray-900 rounded-xl overflow-hidden text-center">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Pitmaster" class="w-full h-64 object-cover">
+                <div class="pitmaster-card rounded-xl overflow-hidden text-center border border-gray-800">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Pitmaster" class="w-full h-full object-cover">
                         <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
                             <img src="https://randomuser.me/api/portraits/men/63.jpg" alt="Pitmaster" class="w-16 h-16 rounded-full border-4 border-orange-600">
                         </div>
@@ -304,13 +395,16 @@
                             <span class="bg-orange-900 text-orange-300 px-2 py-1 rounded text-xs">18hr Smoke</span>
                             <span class="bg-orange-900 text-orange-300 px-2 py-1 rounded text-xs">Pork Belly</span>
                         </div>
+                        <button class="mt-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm w-full">
+                            View Profile
+                        </button>
                     </div>
                 </div>
                 
                 <!-- Pitmaster 4 -->
-                <div class="pitmaster-card bg-gray-900 rounded-xl overflow-hidden text-center">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2098&q=80" alt="Pitmaster" class="w-full h-64 object-cover">
+                <div class="pitmaster-card rounded-xl overflow-hidden text-center border border-gray-800">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2098&q=80" alt="Pitmaster" class="w-full h-full object-cover">
                         <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2">
                             <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Pitmaster" class="w-16 h-16 rounded-full border-4 border-orange-600">
                         </div>
@@ -323,6 +417,9 @@
                             <span class="bg-orange-900 text-orange-300 px-2 py-1 rounded text-xs">Military Grade</span>
                             <span class="bg-orange-900 text-orange-300 px-2 py-1 rounded text-xs">Rib Tactics</span>
                         </div>
+                        <button class="mt-4 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-full text-sm w-full">
+                            View Profile
+                        </button>
                     </div>
                 </div>
             </div>
@@ -336,120 +433,102 @@
     </section>
 
     <!-- Meat Vault -->
-    <section class="py-20 bg-gradient-to-t from-gray-900 to-black">
+    <section id="vault" class="py-20 bg-gradient-to-t from-gray-900 to-black">
         <div class="container mx-auto px-4">
-            <h2 class="title-font text-4xl md:text-5xl mb-12 text-center">
-                THE <span class="text-orange-500">MEAT VAULT</span>
-            </h2>
-            <p class="text-xl text-center max-w-3xl mx-auto mb-12">
-                Our legendary archive of meat reveals, dramatic unboxings, and grill fails that went viral.
-            </p>
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl mb-4">
+                    THE <span class="text-orange-500">MEAT VAULT</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Our legendary archive of meat reveals, dramatic unboxings, and grill fails that went viral.
+                </p>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Vault Item 1 -->
-                <div class="meat-card bg-gray-800 rounded-lg overflow-hidden">
+                <div class="meat-card rounded-lg overflow-hidden relative">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Meat" class="w-full h-40 object-cover">
+                        <img src="https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Meat" class="w-full h-48 object-cover">
                         <div class="absolute top-0 left-0 bg-black bg-opacity-70 px-2 py-1 text-orange-400 text-sm">
                             <i class="fas fa-fire mr-1"></i> 245K views
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white font-bold">The Great Brisket Reveal</h3>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-60">
+                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full text-sm">
+                                <i class="fas fa-play mr-1"></i> Watch Replay
+                            </button>
                         </div>
                     </div>
                     <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-orange-400 text-sm">Big Tony</span>
-                            <span class="text-gray-400 text-sm">3 months ago</span>
-                        </div>
-                        <div class="flex items-center text-yellow-400 text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span class="text-gray-400 ml-2">(1.2K)</span>
+                        <h3 class="font-bold mb-1">The Great Brisket Reveal</h3>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-orange-400">Big Tony</span>
+                            <span class="text-gray-400">3 months ago</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Vault Item 2 -->
-                <div class="meat-card bg-gray-800 rounded-lg overflow-hidden">
+                <div class="meat-card rounded-lg overflow-hidden relative">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Meat" class="w-full h-40 object-cover">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Meat" class="w-full h-48 object-cover">
                         <div class="absolute top-0 left-0 bg-black bg-opacity-70 px-2 py-1 text-orange-400 text-sm">
                             <i class="fas fa-fire mr-1"></i> 189K views
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white font-bold">Tomahawk Tear Down</h3>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-60">
+                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full text-sm">
+                                <i class="fas fa-play mr-1"></i> Watch Replay
+                            </button>
                         </div>
                     </div>
                     <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-orange-400 text-sm">The Butcher</span>
-                            <span class="text-gray-400 text-sm">5 months ago</span>
-                        </div>
-                        <div class="flex items-center text-yellow-400 text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="text-gray-400 ml-2">(987)</span>
+                        <h3 class="font-bold mb-1">Tomahawk Tear Down</h3>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-orange-400">The Butcher</span>
+                            <span class="text-gray-400">5 months ago</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Vault Item 3 -->
-                <div class="meat-card bg-gray-800 rounded-lg overflow-hidden">
+                <div class="meat-card rounded-lg overflow-hidden relative">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Meat" class="w-full h-40 object-cover">
+                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Meat" class="w-full h-48 object-cover">
                         <div class="absolute top-0 left-0 bg-black bg-opacity-70 px-2 py-1 text-orange-400 text-sm">
                             <i class="fas fa-fire mr-1"></i> 320K views
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white font-bold">Rib Drip Championship</h3>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-60">
+                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full text-sm">
+                                <i class="fas fa-play mr-1"></i> Watch Replay
+                            </button>
                         </div>
                     </div>
                     <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-orange-400 text-sm">Grill Sergeant</span>
-                            <span class="text-gray-400 text-sm">2 months ago</span>
-                        </div>
-                        <div class="flex items-center text-yellow-400 text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <span class="text-gray-400 ml-2">(2.4K)</span>
+                        <h3 class="font-bold mb-1">Rib Drip Championship</h3>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-orange-400">Grill Sergeant</span>
+                            <span class="text-gray-400">2 months ago</span>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Vault Item 4 -->
-                <div class="meat-card bg-gray-800 rounded-lg overflow-hidden">
+                <div class="meat-card rounded-lg overflow-hidden relative">
                     <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Meat" class="w-full h-40 object-cover">
+                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Meat" class="w-full h-48 object-cover">
                         <div class="absolute top-0 left-0 bg-black bg-opacity-70 px-2 py-1 text-orange-400 text-sm">
                             <i class="fas fa-fire mr-1"></i> 412K views
                         </div>
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2">
-                            <h3 class="text-white font-bold">Brisket Fail Compilation</h3>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-60">
+                            <button class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-full text-sm">
+                                <i class="fas fa-play mr-1"></i> Watch Replay
+                            </button>
                         </div>
                     </div>
                     <div class="p-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-orange-400 text-sm">Various</span>
-                            <span class="text-gray-400 text-sm">6 months ago</span>
-                        </div>
-                        <div class="flex items-center text-yellow-400 text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span class="text-gray-400 ml-2">(3.1K)</span>
+                        <h3 class="font-bold mb-1">Brisket Fail Compilation</h3>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-orange-400">Various</span>
+                            <span class="text-gray-400">6 months ago</span>
                         </div>
                     </div>
                 </div>
@@ -463,25 +542,123 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-black relative overflow-hidden">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-158681223790-8a5d1a2e0b0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Grill" class="w-full h-full object-cover opacity-20">
+    <!-- Behind the Smoke Blog -->
+    <section id="blog" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="title-font text-4xl md:text-5xl mb-4">
+                    BEHIND THE <span class="text-orange-500">SMOKE</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Tips, tricks, and behind-the-scenes from our pitmasters. Become a grill god yourself.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="blog-card rounded-xl overflow-hidden border border-gray-800">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Blog" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 left-0 bg-orange-600 text-white px-3 py-1 rounded-br-lg text-sm">
+                            TUTORIAL
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-font text-xl mb-3">The Perfect Smoke Ring: A Step-by-Step Guide</h3>
+                        <p class="text-gray-400 text-sm mb-4">Learn the secrets to achieving that Instagram-worthy pink smoke ring every time.</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-orange-400">By Smokin' Joe</span>
+                            <span class="text-gray-400">May 15, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="blog-card rounded-xl overflow-hidden border border-gray-800">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80" alt="Blog" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 left-0 bg-gray-600 text-white px-3 py-1 rounded-br-lg text-sm">
+                            GEAR REVIEW
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-font text-xl mb-3">Top 5 Thermometers for Precision Grilling</h3>
+                        <p class="text-gray-400 text-sm mb-4">We tested 15 thermometers to find the ones worth your hard-earned cash.</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-orange-400">By Grill Sergeant</span>
+                            <span class="text-gray-400">April 28, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="blog-card rounded-xl overflow-hidden border border-gray-800">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1606755456206-b25206bfa233?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Blog" class="w-full h-48 object-cover">
+                        <div class="absolute top-0 left-0 bg-red-600 text-white px-3 py-1 rounded-br-lg text-sm">
+                            FAILS
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="title-font text-xl mb-3">When Good Meat Goes Bad: Grill Fails Compilation</h3>
+                        <p class="text-gray-400 text-sm mb-4">Learn from these hilarious (and painful) mistakes so you don't repeat them.</p>
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-orange-400">By The Butcher</span>
+                            <span class="text-gray-400">March 12, 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-transparent hover:bg-orange-900 text-white border-2 border-orange-600 px-8 py-3 rounded-full font-bold text-lg">
+                    Read More Articles
+                </button>
+            </div>
         </div>
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="title-font text-4xl md:text-6xl mb-6">
-                READY TO <span class="text-orange-500">GET YOUR MEAT WET</span>?
-            </h2>
-            <p class="text-xl max-w-2xl mx-auto mb-10">
-                Join thousands of meat enthusiasts watching, learning, and drooling over the finest grill work on the internet.
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-full font-bold text-lg">
-                    <i class="fas fa-fire mr-2"></i> Start Your Free Trial
-                </button>
-                <button class="bg-transparent hover:bg-orange-900 text-white border-2 border-orange-600 px-8 py-4 rounded-full font-bold text-lg">
-                    <i class="fas fa-question-circle mr-2"></i> How It Works
-                </button>
+    </section>
+
+    <!-- Join the Meatwave -->
+    <section class="py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); min-height: 300px;">
+                        <div class="h-full bg-black bg-opacity-60 flex items-center justify-center p-8">
+                            <div class="text-center">
+                                <h3 class="title-font text-3xl mb-4">JOIN THE <span class="text-orange-500">MEATWAVE</span></h3>
+                                <p class="text-gray-300">Get exclusive alerts, recipes, and behind-the-scenes content straight to your inbox.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm mb-2" for="name">
+                                    Your Name
+                                </label>
+                                <input class="input-grill w-full px-4 py-3 rounded-lg" id="name" type="text" placeholder="John Grillman">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-300 text-sm mb-2" for="email">
+                                    Email Address
+                                </label>
+                                <input class="input-grill w-full px-4 py-3 rounded-lg" id="email" type="email" placeholder="grillmaster@example.com">
+                            </div>
+                            <div class="mb-6">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="form-checkbox bg-gray-700 border-gray-600">
+                                    <span class="ml-2 text-gray-300 text-sm">
+                                        I agree to receive meaty emails (we promise not to spam)
+                                    </span>
+                                </label>
+                            </div>
+                            <button class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:shadow-outline" type="button">
+                                Sign Me Up!
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -495,9 +672,15 @@
                         <i class="fas fa-fire text-orange-500 text-2xl mr-2"></i>
                         <span class="title-font text-3xl text-orange-500">Only<span class="text-white">Meats</span></span>
                     </div>
-                    <p class="text-gray-400 max-w-xs">
-                        The premier destination for high-stakes meat reveals and hardcore grilling action.
+                    <p class="text-gray-400 max-w-xs mb-4">
+                        We bring the beef. You bring the bandwidth.
                     </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-orange-500 text-xl"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 text-xl"><i class="fab fa-twitch"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-orange-500 text-xl"><i class="fab fa-tiktok"></i></a>
+                    </div>
                 </div>
                 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
@@ -505,9 +688,9 @@
                         <h3 class="title-font text-xl text-white mb-4">Navigation</h3>
                         <ul class="space-y-2">
                             <li><a href="#" class="text-gray-400 hover:text-orange-500">Home</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-orange-500">Live Streams</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-orange-500">Pitmasters</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-orange-500">Meat Vault</a></li>
+                            <li><a href="#live" class="text-gray-400 hover:text-orange-500">Live Streams</a></li>
+                            <li><a href="#pitmasters" class="text-gray-400 hover:text-orange-500">Pitmasters</a></li>
+                            <li><a href="#vault" class="text-gray-400 hover:text-orange-500">Meat Vault</a></li>
                         </ul>
                     </div>
                     
@@ -522,53 +705,25 @@
                     </div>
                     
                     <div>
-                        <h3 class="title-font text-xl text-white mb-4">Connect</h3>
-                        <div class="flex space-x-4 mb-4">
-                            <a href="#" class="text-gray-400 hover:text-orange-500 text-xl"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-orange-500 text-xl"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-orange-500 text-xl"><i class="fab fa-youtube"></i></a>
-                            <a href="#" class="text-gray-400 hover:text-orange-500 text-xl"><i class="fab fa-tiktok"></i></a>
-                        </div>
-                        <p class="text-gray-400">support@onlymeats.com</p>
+                        <h3 class="title-font text-xl text-white mb-4">Contact</h3>
+                        <ul class="space-y-2">
+                            <li class="text-gray-400"><i class="fas fa-envelope mr-2"></i> support@onlymeats.com</li>
+                            <li class="text-gray-400"><i class="fas fa-phone mr-2"></i> 1-800-MEAT-LUV</li>
+                            <li class="text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> Grillville, TX</li>
+                        </ul>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-500 text-sm">
                     © 2023 OnlyMeats. All rights reserved. No veggies were harmed in the making of this website.
                 </p>
-                <div class="flex items-center">
-                    <img src="https://via.placeholder.com/80x30" alt="Payment" class="h-6 mr-2">
-                    <img src="https://via.placeholder.com/80x30" alt="Payment" class="h-6 mr-2">
-                    <img src="https://via.placeholder.com/80x30" alt="Payment" class="h-6">
-                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple countdown timer for demonstration
-        function updateCountdown() {
-            const now = new Date();
-            const tomorrow = new Date();
-            tomorrow.setDate(now.getDate() + 1);
-            tomorrow.setHours(20, 0, 0, 0); // 8PM
-            
-            const diff = tomorrow - now;
-            
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown-hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('countdown-minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('countdown-seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-        
         // Mobile menu toggle
         document.querySelector('.md\\:hidden').addEventListener('click', function() {
             const menu = document.querySelector('.md\\:flex');
@@ -584,6 +739,20 @@
             menu.classList.toggle('space-y-4');
             menu.classList.toggle('space-x-8');
         });
-    </script>
-</body>
+        
+        // Add sauce drips dynamically
+        function addSauceDrips() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                for (let i = 0; i < 3; i++) {
+                    const drip = document.createElement('div');
+                    drip.className = 'sauce-drip hidden md:block';
+                    drip.style.top = `${Math.random() * 80 + 10}%`;
+                    drip.style.left = `${Math.random() * 80 + 10}%`;
+                    section.appendChild(drip);
+                }
+            });
+        }
+        
+        //
 </html>
